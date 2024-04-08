@@ -2,10 +2,13 @@ package com.example.demo.Repositorio;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.demo.Entidades.Salida;
 import com.example.demo.Entidades.Socio;
 
+@SpringBootTest
 public class SalidaRepositorioTest {
 
     @Autowired
@@ -15,9 +18,9 @@ public class SalidaRepositorioTest {
     @Test
     void anyadirSalida(){
         Salida salida =  new Salida();
-        salida.setFecha("Juan");
+        salida.setHora("2 am");
         salida.setDestino("Singapur");
-        salida.setFecha("3 PM");
+        salida.setFecha("22 abil");
         salidaRepositorio.save(salida);
         
     }

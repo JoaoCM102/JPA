@@ -17,11 +17,11 @@ public class SocioRepositorioTest {
     @Test
     void anyadirSocio(){
         Socio patron =  new Socio();
-        patron.setNombre("Juan");
-        patron.setApellido("Jimenez");
-        patron.setDirección("Calle la Ruta");
+        patron.setNombre("pedro");
+        patron.setApellido("Peluca");
+        patron.setDireccion("Calle la Ruta");
         patron.setEmail("juan@gmail.com");
-        patron.setTeléfono("5555555");
+        patron.setTelefono("1234567");
         socioRepositorio.save(patron);
         
     }
@@ -32,7 +32,7 @@ public class SocioRepositorioTest {
         Socio socio = socioRepositorio.findById(id).orElseThrow(()-> new IllegalArgumentException("No se encontro el barco con id" + id));
         socio.setNombre("Nuevo Dato");
         socio.setApellido("Nuevo apellido");
-        socio.setTeléfono("555555555");
+        socio.setTelefono("555555555");
 
         socioRepositorio.save(socio);
     }
@@ -50,7 +50,7 @@ public class SocioRepositorioTest {
 
     @Test
     void deleteById(){
-        Long id = 2L;
+        Long id = 1L;
         if (socioRepositorio.existsById(id)) {
             socioRepositorio.deleteById(id);
         }else{throw new IllegalArgumentException("No se pudo encontrar este Id");}

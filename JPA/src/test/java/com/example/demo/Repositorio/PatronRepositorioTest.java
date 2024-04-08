@@ -2,10 +2,12 @@ package com.example.demo.Repositorio;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.demo.Entidades.Barco;
 import com.example.demo.Entidades.Patron;
 
+@SpringBootTest
 public class PatronRepositorioTest {
 
     @Autowired
@@ -17,9 +19,9 @@ public class PatronRepositorioTest {
         Patron patron =  new Patron();
         patron.setNombre("Juan");
         patron.setApellido("Jimenez");
-        patron.setDirección("Calle la Ruta");
+        patron.setDireccion("Calle la Ruta");
         patron.setEmail("juan@gmail.com");
-        patron.setTeléfono("5555555");
+        patron.setTelefono("5555555");
         patronRepositorio.save(patron);
         
     }
@@ -30,7 +32,7 @@ public class PatronRepositorioTest {
         Patron patron = patronRepositorio.findById(id).orElseThrow(()-> new IllegalArgumentException("No se encontro el barco con id" + id));
         patron.setNombre("Nuevo Dato");
         patron.setApellido("Nuevo apellido");
-        patron.setTeléfono("555555555");
+        patron.setTelefono("555555555");
 
         patronRepositorio.save(patron);
     }

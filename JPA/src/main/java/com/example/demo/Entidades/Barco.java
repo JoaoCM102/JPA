@@ -3,7 +3,10 @@ package com.example.demo.Entidades;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,29 +25,33 @@ import lombok.Data;
 public class Barco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ID_Barco;
+	private Long idBarco;
 	
 	@Basic
 	@Column(nullable = false)
 	@NotBlank
-    private String Número_Matrícula;
+    private String numeroMatricula;
 	
 	@NotBlank(message = "El campo nombre esta vacio")
-    private String Nombre;
+    private String nombre;
 	
 	@NotNull
-    private int Número_Amarre;
-    private double Cuota; 
+    private int numeroAmarre;
+    private double cuota; 
     
     @OneToOne
     @JoinColumn(
     		name = "salida",
-    		referencedColumnName = "ID_Salida")
+    		referencedColumnName = "idSalida")
+    @JsonIgnore
     private Salida salida;
+    
+    
     
     @ManyToOne
     @JoinColumn(
     		name = "idSocio",
-    		referencedColumnName = "ID_Socio")
+    		referencedColumnName = "idSocio")
+    @JsonIgnore
     private Socio socio;
 }

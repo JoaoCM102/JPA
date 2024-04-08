@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
 
@@ -25,32 +24,29 @@ import lombok.Data;
 public class Socio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ID_Socio;
+	private Long idSocio;
 	
 	@Basic
 	@Column(nullable = false)
 	@NotBlank(message = "El nombre esta vacio ")
-    private String Nombre;
+    private String nombre;
 	
 	@Column(nullable = false)
 	@NotBlank(message = "El apellido esta vacio ")
-    private String Apellido;
+    private String apellido;
 	
 	@NotBlank(message = "La direccion esta vacio ")
-    private String Dirección;
+    private String direccion;
 	
     @Column(nullable = false)
-    private String Teléfono;
+    private String telefono;
     
     @Email
-    private String Email;
+    private String email;
     
     @OneToMany(
     		cascade = CascadeType.ALL,
     		fetch = FetchType.EAGER)
-    @JoinColumn(
-    		name = "idSocio",
-    		referencedColumnName = "ID_Socio")
     private List<Barco> barcos;
     
     

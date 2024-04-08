@@ -3,6 +3,8 @@ package com.example.demo.Entidades;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -11,8 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
@@ -21,7 +21,7 @@ import lombok.Data;
 public class Salida {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ID_Salida;
+	private Long idSalida;
 	
 	@NotBlank(message = "Campo hora vacio ")
 	private String hora;
@@ -39,9 +39,10 @@ public class Salida {
     private Barco barco;
     
     
+    @JsonIgnore
     @OneToOne
     @JoinColumn(
     		name = "patron",
-    		referencedColumnName = "ID_Patron")
+    		referencedColumnName = "idPatron")
     private Patron patron;
 }
